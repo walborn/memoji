@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #434344;
+  background-color: #cfd0cf;
+}
+
+.header {
+  font-size: 42px;
+  margin: 40px 0;
+  line-height: 47px;
+  text-align: center;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 460px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 1;
+  perspective: 600px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card > .front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  font-size: 40px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+
+  transition: 0.5s;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+.card > .back {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+  transition: 0.5s;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+.card:hover > .back {
+  background-color: #fff;
+}
+.card > .back:before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  left: 4px;
+  bottom: 4px;
+  border-radius: 4px;
+  background: linear-gradient(-45deg, #22ab93, #19668d);
+}
+
+.card.opened > .front {
+  transform: rotateY(360deg);
+}
+
+.card.opened > .back {
+  transform: rotateY(180deg);
+}
+
+.card.failure > .front {
+  background-color: #ea4335;
+}
+
+.card.success > .front {
+  background-color: #34a853;
+}
